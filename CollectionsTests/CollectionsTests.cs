@@ -35,5 +35,25 @@ namespace CollectionsTests
             Trace.WriteLine($"The new collection is:{myValues.ToString()}");
         }
 
+        [Test]
+        public void Test_Collections_RemoveAll()
+        {
+            //Arrange
+            var myValues = new Collections.Collection<int>(5, 10, 15, 20, 25);
+            int i = myValues.Count;
+
+            //Act
+            for (; i>0; i--)
+            {
+                myValues.RemoveAt(0);
+            }
+       
+            //Assert
+            var expected = new Collections.Collection<int>();
+            Assert.AreEqual(expected.ToString(), myValues.ToString(), $"The new collection is:{myValues.ToString()}");
+            Assert.That(myValues.Count == 0);
+            Trace.WriteLine($"The new collection is:{myValues.ToString()}");
+        }
+
     }
 }
