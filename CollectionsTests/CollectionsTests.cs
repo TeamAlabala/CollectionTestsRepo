@@ -91,6 +91,50 @@ namespace CollectionsTests
             //assert
             Assert.That(numsToTest[numsToTest.Count-1] == numToInsert);
         }
+        
+        [Test]
+        public void ExchangeInvalidIndexes()
+        {
+            //arrange
+            var numsToTest = new Collection<int>(1, 2, 3, 4, 5);
 
+            //act
+            //numsToTest.Exchange(0, 6);
+
+            //assert
+
+            Assert.That(() => numsToTest.Exchange(0, 6), Throws.InstanceOf<System.ArgumentOutOfRangeException>());
+
+        }
+
+        [Test]
+        public void GetByInvalidIndex()
+        {
+            //arrange
+            var numsToTest = new Collection<int>(1, 2, 3, 4, 5);
+
+            //act
+            //numsToTest.Exchange(0, 6);
+
+            //assert
+
+            Assert.That(() => numsToTest[15], Throws.InstanceOf<System.ArgumentOutOfRangeException>());
+
+        }
+
+        [Test]
+        public void InsertByInvalidIndex()
+        {
+            //arrange
+            var numsToTest = new Collection<int>(1, 2, 3, 4, 5);
+
+            //act
+            //numsToTest.Exchange(0, 6);
+
+            //assert
+
+            Assert.That(() => numsToTest.InsertAt(15, 6), Throws.InstanceOf<System.ArgumentOutOfRangeException>());
+
+        }
     }
 }
