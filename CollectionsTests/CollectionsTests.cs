@@ -34,6 +34,63 @@ namespace CollectionsTests
             Assert.AreEqual(expected.ToString(), myValues.ToString(), $"The new collection is:{myValues.ToString()}");
             Trace.WriteLine($"The new collection is:{myValues.ToString()}");
         }
+        
+         [Test]
+        public void ExchangeFirstLast()
+        {
+            //arrange
+            var numsToTest = new Collection<int>(1, 2, 3, 4, 5);
+            var numsExpected = new Collection<int>(5, 2, 3, 4, 1);
+
+            //act
+            numsToTest.Exchange(0, 4) ;
+
+            //assert
+            Assert.AreEqual(numsToTest[0], numsExpected[0]);
+
+        }
+
+        [Test]
+        public void ExchangeMiddleIndexes()
+        {
+            //arrange
+            var numsToTest = new Collection<int>(1, 2, 3, 4, 5);
+            var numsExpected = new Collection<int>(1, 2, 4, 3, 5);
+
+            //act
+            numsToTest.Exchange(2, 3);
+
+            //assert
+            Assert.AreEqual(numsToTest[2], numsExpected[2]);
+        }
+        
+        [Test]
+        public void GetByIndex()
+        {
+            //arrange
+            var numsToTest = new Collection<int>(1, 2, 3, 4, 5);
+            int numByIndex = 4;
+
+            //act
+            int testedNum = numsToTest[3];
+
+            //assert
+            Assert.That(testedNum == numByIndex);
+        }
+
+        [Test]
+        public void InsertAtEnd()
+        {
+            //arrange
+            var numsToTest = new Collection<int>(1, 2, 3, 4, 5);
+            int numToInsert = 6;
+
+            //act
+            numsToTest.Add(numToInsert);
+
+            //assert
+            Assert.That(numsToTest[numsToTest.Count-1] == numToInsert);
+        }
 
     }
 }
