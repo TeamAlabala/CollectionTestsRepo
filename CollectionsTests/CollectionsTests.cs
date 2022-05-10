@@ -53,7 +53,7 @@ namespace CollectionsTests
             //arrange
             var numsToTest = new Collection<int>(1, 2, 3, 4, 5);
             var numsExpected = new Collection<int>(1, 2, 4, 3, 5);
-
+          
             //act
             numsToTest.Exchange(2, 3);
 
@@ -110,6 +110,26 @@ namespace CollectionsTests
             var numsToTest = new Collection<int>(1, 2, 3, 4, 5);    
             //assert
             Assert.That(() => numsToTest.InsertAt(15, 6), Throws.InstanceOf<System.ArgumentOutOfRangeException>());
+        }
+      
+        [Test]
+        public void Test_Collections_RemoveAll()
+        {
+            //Arrange
+            var myValues = new Collections.Collection<int>(5, 10, 15, 20, 25);
+            int i = myValues.Count;
+
+            //Act
+            for (; i>0; i--)
+            {
+                myValues.RemoveAt(0);
+            }
+       
+            //Assert
+            var expected = new Collections.Collection<int>();
+            Assert.AreEqual(expected.ToString(), myValues.ToString(), $"The new collection is:{myValues.ToString()}");
+            Assert.That(myValues.Count == 0);
+            Trace.WriteLine($"The new collection is:{myValues.ToString()}");
         }
     }
 }
