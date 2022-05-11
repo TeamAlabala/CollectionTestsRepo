@@ -605,5 +605,13 @@ namespace CollectionsTests
 
             }
         }
+
+        [Test]
+        public void Test_Collection_Set_WithIndex()
+        {
+            var collection = new Collection<int>(1, 2, 3);
+            collection[2] = 4;
+            Assert.AreEqual(4, collection[2]);
+        }
     }
 }
