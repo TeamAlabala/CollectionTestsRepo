@@ -344,6 +344,24 @@ namespace CollectionsTests
             Assert.That(names.ToString(), Is.EqualTo("[Peter, Maria, Steve]"));
         }
 
+        [Test]
+        public void AddWithGrow()
+        {
+            var nums = new Collection<int>(555);
+            int oldCapacity = nums.Capacity;
+            nums.Add(556);
+            Assert.That(nums.ToString(), Is.EqualTo("[555, 556]"));
+            Assert.That(nums.Capacity, Is.GreaterThanOrEqualTo(oldCapacity));
+            Assert.That(nums.Capacity, Is.GreaterThanOrEqualTo(nums.Count));
+        }
+
+        [Test]
+        public void AddRange()
+        {
+            var nums = new Collection<int>(10);
+            nums.AddRange(11, 12, 13);
+            Assert.That(nums.ToString(), Is.EqualTo("[10, 11, 12, 13]"));
+        }
 
         [Test]
         [TestCase(new int[] { 10, 20, 30, 40, 50 }, TestName = "Count and Capacity - 5 elements + 1 added")]
